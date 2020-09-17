@@ -26,7 +26,8 @@
 		
 
 		<!-- SonarQube Properties -->
-		<sonar.host.url>http://sonarqubeapm.yaman.com.br:9000</sonar.host.url>
+<!-- 		<sonar.host.url>http://sonarqubeapm.yaman.com.br:9000</sonar.host.url> -->
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 <!-- 		<sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey> -->
 		<sonar.projectKey>br.com.yaman.app-rest-demo</sonar.projectKey>
 		<sonar.projectName>${project.artifactId}</sonar.projectName>
