@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<Context>
+	<Realm className="org.apache.catalina.realm.MemoryRealm" pathname="${catalina.home}/conf/tomcat-users.xml" />
+</Context>

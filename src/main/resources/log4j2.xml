@@ -1,0 +1,19 @@
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+	<Appenders>
+		<Console name="console-log" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="[YAMAN] DEMO [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{10} - %msg%n" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="br.com.yaman" level="ERROR"
+			additivity="false">
+			<appender-ref ref="console-log" level="ERROR" />
+		</Logger>
+		<Root level="ERROR" additivity="false">
+			<AppenderRef ref="console-log" />
+		</Root>
+	</Loggers>
+
+</Configuration>
