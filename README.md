@@ -30,3 +30,50 @@ Payload example:
 	"userUUID": "a618522c-c624-11ea-87d0-0242ac130003"
 }
 ```
+
+## Jenkins Pipeline
+```groovy
+pipeline {
+	agent any
+		tools{
+			maven "MAVEN_3_6_3"
+			jdk "OPENJDK_JDK_11"
+		}
+    		options {
+			timeout(time: 15, unit: 'MINUTES')
+			buildDiscarder(logRotator(numToKeepStr: '10'))
+		}
+	stages{
+	    
+	     stage("Clone Repository from GitHub"){
+	        steps {
+				bat 'git config --global http.sslVerify false'
+				timeout(time: 5, unit: "MINUTES") {
+					git branch: "master",
+						credentialsId: "github-up-jeancbezerra-with-token",
+						url: "https://github.com/jeancbezerra/app-rest-demo.git"
+				}
+			}
+	    }
+	    
+	    stage("Build with Maven"){
+	        steps {
+	            timeout(time: 5, unit: "MINUTES") {
+				    bat 'mvn clean package'
+	            }
+			}
+	    }
+	    
+	    stage("Scanner with SonarQube"){
+	        steps {
+				timeout(time: 5, unit: "MINUTES") {
+                    bat "mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar"
+				}
+			}
+	    }
+	    
+	    
+	}	
+	
+}
+```
