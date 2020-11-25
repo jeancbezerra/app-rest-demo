@@ -16,15 +16,12 @@ public class CardDAO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	//private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("web-unit");
-
 	public CardDAO() {
 	}
 
 	public List<CardEntity> listMyCards(String userId) {
 		try {
 			
-//			EntityManager entityManager = entityManagerFactory.createEntityManager();
 			EntityManager entityManager = HibernateEntityManagerHelper.getEntityManager();
 			
 			String transactionQuery = "SELECT * FROM PORTAL.CARDS WHERE USER_UUID = :user_uuid ORDER BY NICKNAME ";
@@ -52,7 +49,6 @@ public class CardDAO implements Serializable {
 	public List<CardEntity> listSharedCards(String userId) {
 		try {
 
-//			EntityManager entityManager = entityManagerFactory.createEntityManager();
 			EntityManager entityManager = HibernateEntityManagerHelper.getEntityManager();
 			
 			String transactionQuery = "SELECT * FROM PORTAL.CARDS WHERE USER_UUID = :user_uuid ORDER BY NICKNAME ";
@@ -80,7 +76,6 @@ public class CardDAO implements Serializable {
 	public void persistNewCard(CardEntity cardEntity) {
 		try {
 
-//			EntityManager entityManager = entityManagerFactory.createEntityManager();
 			EntityManager entityManager = HibernateEntityManagerHelper.getEntityManager();
 
 			try {
@@ -92,6 +87,7 @@ public class CardDAO implements Serializable {
 				HibernateEntityManagerHelper.commit();
 				
 			} catch (Exception e) {
+				e.printStackTrace();
 				HibernateEntityManagerHelper.rollback();
 			} finally {
 				HibernateEntityManagerHelper.closeEntityManager();

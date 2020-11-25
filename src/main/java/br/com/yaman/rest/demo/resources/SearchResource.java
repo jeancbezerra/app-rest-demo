@@ -12,13 +12,14 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Path(value = "/search")
+@Path(value = "/fake")
 public class SearchResource {
 
 	private static final Logger LOGGER = LogManager.getLogger(SearchResource.class);
 	private SecureRandom rand = new SecureRandom();
 
 	@GET
+	@Path("/search")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getSearch() {
 		try {

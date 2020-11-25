@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.yaman</groupId>
 	<artifactId>app-rest-demo</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 
@@ -21,23 +21,20 @@
 		<hk2-version>2.6.1</hk2-version>
 		<jersey-version>2.30</jersey-version>
 		<junit.jupiter.version>5.6.0</junit.jupiter.version>
-		<version.io.swagger>2.1.4</version.io.swagger>
-		
-		
+		<version.io.swagger>2.1.4</version.io.swagger>		
 
-		<!-- SonarQube Properties -->
-<!-- 		<sonar.host.url>http://sonarqubeapm.yaman.com.br:9000</sonar.host.url> -->
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-<!-- 		<sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey> -->
-		<sonar.projectKey>br.com.yaman.app-rest-demo</sonar.projectKey>
+	
+		<sonar.host.url>http://sonarqubeapm.yaman.com.br:9000</sonar.host.url>
+		<sonar.projectKey>${project.artifactId}</sonar.projectKey>
 		<sonar.projectName>${project.artifactId}</sonar.projectName>
 		<sonar.projectVersion>${project.version}</sonar.projectVersion>
-		<sonar.links.scm>http://gitlabapm.yaman.com.br/yaman-demos/bot-app-rest-demo.git</sonar.links.scm>
 		<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
 		<sonar.scm.provider>git</sonar.scm.provider>
 		<sonar.log.level>DEBUG</sonar.log.level>
-		<sonar.organization>jeancbezerra-github</sonar.organization>
-		<sonar.login>fe940b4dfdfa941c494e4381723ffc0b24b22347</sonar.login>
+		<!-- Wander -->
+		<!-- <sonar.login>576b009f8643d94122eff95d96d3074d19bc0a08</sonar.login> -->
+		<!-- Thaynara -->
+		<sonar.login>5d3751d7197dd8c1daafaf535d3d8b0f88efdd34</sonar.login>
 	</properties>
 
 	<dependencies>
