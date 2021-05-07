@@ -15,21 +15,23 @@ pipeline {
     }
   
     stages {
-    stage("Application Repository"){
-      steps {
-        sh 'git config --global http.sslVerify false'
-          timeout(time: 2, unit: "MINUTES") {
-            git branch: "master",
-              credentialsId: "gitlab-yaman",
-              url: "${BOT_REPOSITORY}"
-          }
-         }
-      }           
-    }
-		
-		stage("Build Application"){
-      steps {
-        sh "mvn clean package -DskipTests"
-      }
+
+        stage("Application Repository"){
+        steps {
+            sh 'git config --global http.sslVerify false'
+            timeout(time: 2, unit: "MINUTES") {
+                git branch: "master",
+                credentialsId: "gitlab-yaman",
+                url: "${BOT_REPOSITORY}"
+                }
+            }           
+        }
+            
+        stage("Build Application"){
+        steps {
+            sh "mvn clean package -DskipTests"
+        }
+        }
+
     }
 }
