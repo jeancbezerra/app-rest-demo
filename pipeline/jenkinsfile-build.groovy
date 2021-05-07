@@ -1,7 +1,7 @@
 #!groovy
 
 def BOT_REPOSITORY = "https://github.com/jeancbezerra/app-rest-demo.git"
-def BOT_SCRIPT_NAME = "bot/bot.jmx"
+def BOT_SCRIPT_NAME = "bot/demo-db-bot.jmx"
 def BOT_VIRTUAL_USERS = 500
 def BOT_RUMPUP = 300
 def BOT_DURATION = 600
