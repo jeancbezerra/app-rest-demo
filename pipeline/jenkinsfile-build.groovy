@@ -10,7 +10,7 @@ def BOT_STARTUPDELAY = 1
 pipeline {
     agent any
     tools{
-        jdk "JDK_OPENJDK_11"
+        jdk "ADOPTOPENJDK_jdk8u292-b10"
 	maven "MAVEN_3_8_1"
     }
     options {
