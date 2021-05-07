@@ -2,7 +2,7 @@
 
 def BOT_REPOSITORY = "https://github.com/jeancbezerra/app-rest-demo.git"
 def BOT_SCRIPT_NAME = "bot/bot-jmeter-4.jmx"
-def BOT_VIRTUAL_USERS = 200
+def BOT_VIRTUAL_USERS = 500
 def BOT_RUMPUP = 60
 def BOT_DURATION = 300
 def BOT_STARTUPDELAY = 2
