@@ -10,8 +10,8 @@ def BOT_STARTUPDELAY = 1
 pipeline {
     agent any
     tools{
-        jdk "ORACLE_JDK_1.8.0_291"
-		maven "MAVEN_3_8_1"
+        jdk "JDK_OPENJDK_11"
+	maven "MAVEN_3_8_1"
     }
     options {
         timestamps()
