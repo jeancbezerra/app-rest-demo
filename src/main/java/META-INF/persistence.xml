@@ -15,7 +15,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://yaman_apm_dev_database-1.cgbs5xhmvnp1.sa-east-1.rds.amazonaws.com:5432/demodb?ApplicationName=app-rest-demo" />
 									
 			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="vkUgq3wZ5BMm" />
 			
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
