@@ -1,6 +1,6 @@
 #!groovy
 
-def BOT_REPOSITORY = "https://gitlab.com/yaman-sre-team/devops-porto-seguro/cloud-api.git"
+def BOT_REPOSITORY = "https://github.com/jeancbezerra/app-rest-demo.git"
 def BOT_SCRIPT_NAME = "bot.jmx"
 def BOT_VIRTUAL_USERS = 500
 def BOT_RUMPUP = 300
