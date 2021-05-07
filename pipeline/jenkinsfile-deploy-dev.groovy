@@ -1,5 +1,7 @@
 #!groovy
 
+def BOT_REPOSITORY = "https://github.com/jeancbezerra/app-rest-demo.git"
+
 pipeline {
   
     agent any
