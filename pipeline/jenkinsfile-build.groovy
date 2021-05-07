@@ -34,17 +34,17 @@ pipeline {
                 sh "mvn clean package -DskipTests"
             }
         }
-/*
+
         stage("Bot Execution"){
             steps {
-                sh "/opt/yamancloud/FERRAMENTAS/apache-jmeter-5.4.1/bin/jmeter.sh --nongui --testfile ${env.JENKINS_HOME}/workspace/${JOB_NAME}/${BOT_SCRIPT_NAME} --jmeterproperty threads=${BOT_VIRTUAL_USERS} --jmeterproperty rampup=${BOT_RUMPUP} --jmeterproperty duration=${BOT_DURATION} --jmeterproperty startup=${BOT_STARTUPDELAY} --jmeterproperty aggregate=load-test.csv"
+                sh "/opt/coe/JMETER/apache-jmeter-4.0/bin/jmeter.sh --nongui --testfile ${env.JENKINS_HOME}/workspace/${JOB_NAME}/${BOT_SCRIPT_NAME} --jmeterproperty threads=${BOT_VIRTUAL_USERS} --jmeterproperty rampup=${BOT_RUMPUP} --jmeterproperty duration=${BOT_DURATION} --jmeterproperty startup=${BOT_STARTUPDELAY} --jmeterproperty aggregate=load-test.csv"
             }
         }
-        
-        
+	    
+/*      
         stage("Bot Execution in Remote Servers"){
             steps {
-                sh "/opt/yamancloud/FERRAMENTAS/apache-jmeter-5.4.1/bin/jmeter.sh -n -t ${env.JENKINS_HOME}/workspace/${JOB_NAME}/${BOT_SCRIPT_NAME} -R172.31.18.127:1099 -Gthreads=${BOT_VIRTUAL_USERS} -Grampup=${BOT_RUMPUP} -Gduration=${BOT_DURATION} -Gstartup=${BOT_STARTUPDELAY} -Gaggregate=load-test-remote.csv"
+                sh "/opt/coe/JMETER/apache-jmeter-4.0/bin/jmeter.sh -n -t ${env.JENKINS_HOME}/workspace/${JOB_NAME}/${BOT_SCRIPT_NAME} -R172.31.18.127:1099 -Gthreads=${BOT_VIRTUAL_USERS} -Grampup=${BOT_RUMPUP} -Gduration=${BOT_DURATION} -Gstartup=${BOT_STARTUPDELAY} -Gaggregate=load-test-remote.csv"
 
             }
         }
@@ -55,7 +55,7 @@ pipeline {
 
     post { 
         success{ 
-            //archiveArtifacts artifacts: 'load-test.csv'
+            archiveArtifacts artifacts: 'load-test.csv'
 			cleanWs()
         }    
 		failure{
