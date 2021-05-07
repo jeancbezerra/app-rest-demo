@@ -6,7 +6,6 @@ def BOT_VIRTUAL_USERS = 200
 def BOT_RUMPUP = 60
 def BOT_DURATION = 300
 def BOT_STARTUPDELAY = 2
->>>>>>> 518f73e96c965dc15a0b88c9a418d1cbd641ca62
 
 pipeline {
     agent any
