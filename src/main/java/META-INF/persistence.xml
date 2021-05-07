@@ -11,8 +11,8 @@
 			<property name="hibernate.archive.autodetection" value="class" />
 
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://li4264.portoseguro.brasil:5432/demodb?ApplicationName=app-rest-demo" />
-<!-- 				<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.0.180:5432/demodb?ApplicationName=app-rest-demo" /> -->
+<!-- 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://li4264.portoseguro.brasil:5432/demodb?ApplicationName=app-rest-demo" /> -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://yaman_apm_dev_database-1.cgbs5xhmvnp1.sa-east-1.rds.amazonaws.com:5432/demodb?ApplicationName=app-rest-demo" />
 									
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			<property name="javax.persistence.jdbc.password" value="postgres" />
