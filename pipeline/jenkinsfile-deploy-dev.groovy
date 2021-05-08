@@ -35,11 +35,26 @@ pipeline {
           }
         }
       
+      /*
       stage("Deploy DEV ENV"){
         steps{
           deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.23:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
         }
       }
+      */
+      
+stage("Deploy in Parallel Envs"){
+      steps{
+        parallel(
+            dev-env: {
+              deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.23:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
+            },          
+            qa-env: {
+              deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.70:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
+            }
+         )
+      }
+  }
 
     }
 }
