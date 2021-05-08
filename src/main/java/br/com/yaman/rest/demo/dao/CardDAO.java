@@ -109,9 +109,7 @@ public class CardDAO implements Serializable {
 
 			try {
 								
-				cardEntity = (CardEntity) entityManager.createNativeQuery(transactionQuery,CardEntity.class).setParameter("uuid", uuid).getSingleResult();		
-				
-				System.out.println("===================================================================== LOG AMADOR : " + cardEntity.toString());
+				cardEntity = (CardEntity) entityManager.createNativeQuery(transactionQuery,CardEntity.class).setParameter("uuid", uuid).getSingleResult();
 			
 				return cardEntity;
 				

@@ -26,7 +26,7 @@ public class CardEntity implements Serializable {
 	@Column(name = "number")
 	private String number;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "membersince")
 	private Date memberSince;
 	

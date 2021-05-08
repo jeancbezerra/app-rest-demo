@@ -18,9 +18,7 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import br.com.yaman.rest.demo.dao.CardDAO;
 import br.com.yaman.rest.demo.dao.UserDAO;
-import br.com.yaman.rest.demo.entity.CardEntity;
 import br.com.yaman.rest.demo.entity.UserEntity;
 
 @Path(value = "/user")
