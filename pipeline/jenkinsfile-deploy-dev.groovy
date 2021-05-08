@@ -19,21 +19,27 @@ pipeline {
     stages {
 
         stage("Application Repository"){
-        steps {
+          steps {
             sh 'git config --global http.sslVerify false'
             timeout(time: 2, unit: "MINUTES") {
                 git branch: "master",
                 credentialsId: "gitlab-yaman",
                 url: "${BOT_REPOSITORY}"
-                }
-            }           
+            }
+          }           
         }
             
         stage("Build Application"){
-        steps {
+          steps {
             sh "mvn clean package -DskipTests"
+          }
         }
+      
+      stage("Deploy DEV ENV"){
+        steps{
+          deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.23:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
         }
+      }
 
     }
 }
