@@ -19,21 +19,67 @@ pipeline {
     stages {
 
         stage("Application Repository"){
-        steps {
+          steps {
             sh 'git config --global http.sslVerify false'
             timeout(time: 2, unit: "MINUTES") {
                 git branch: "master",
                 credentialsId: "gitlab-yaman",
                 url: "${BOT_REPOSITORY}"
-                }
-            }           
+            }
+          }           
         }
             
         stage("Build Application"){
-        steps {
+          steps {
             sh "mvn clean package -DskipTests"
+          }
         }
-        }
+      
+        //stage("Deploy in Parallel Envs"){
+        //      steps{
+        //        parallel(
+        //            a: {
+        //             deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.23:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
+        //            },          
+        //            b: {
+        //              deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.70:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
+        //            }
+        //         )
+        //      }
+        //  }
+      
+      stage("Deploy Parallel Stages"){
+	parallel {
+		//Begin parallel stage dev
+		stage("Deploy in Development"){			
+			steps {
+				deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.23:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
+			}
+			post {
+				always {
+					echo "Deployed"
+				}
+            }
+		}
+		//End parallel stage dev
+		//Begin parallel stage qa
+		stage("Deploy in Quality-Assurance"){			
+			steps {
+				deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.70:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
+			}
+			post {
+				always {
+					echo "Deployed"
+				}
+            }
+		}
+		//End parallel stage qa	
+			
+	}
+}
+      
+      
+      
 
     }
 }
