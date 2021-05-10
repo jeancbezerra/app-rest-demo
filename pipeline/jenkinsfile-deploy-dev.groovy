@@ -62,18 +62,7 @@ pipeline {
             }
 		}
 		//End parallel stage dev
-		//Begin parallel stage qa
-		stage("Deploy in Quality-Assurance"){			
-			steps {
-				deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.70:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
-			}
-			post {
-				always {
-					echo "Deployed"
-				}
-            }
-		}
-		//End parallel stage qa	
+		
 			
 	}
 }
