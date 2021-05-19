@@ -33,15 +33,14 @@ pipeline {
                 sh "mvn clean package -DskipTests"
             }
         }
-    }
 
-    post {
-        success{
-            archiveArtifacts artifacts: 'app-rest-demo.war'
-            cleanWs()
-        }failure{
-	    cleanWs()
-	}
-    }
-	
+        post {
+            success{
+                archiveArtifacts artifacts: 'app-rest-demo.war'
+                cleanWs()
+            }failure{
+                cleanWs()
+            }
+        }
+    }	
 }
