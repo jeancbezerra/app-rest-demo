@@ -16,6 +16,7 @@ pipeline {
     options {
         timestamps()
         buildDiscarder(logRotator(numToKeepStr:'3'))
+	timeout(time: 4, unit: 'MINUTES')
     }
     stages {
        stage("Application Repository"){
@@ -23,7 +24,7 @@ pipeline {
 			sh 'git config --global http.sslVerify false'
 				timeout(time: 2, unit: "MINUTES") {
 					git branch: "master",
-						credentialsId: "gitlab-yaman",
+						credentialsId: "github-up-jeancbezerra",
 						url: "${BOT_REPOSITORY}"
 				}
             }           
@@ -44,10 +45,10 @@ pipeline {
             archiveArtifacts artifacts: 'load-test.csv'
 			cleanWs()
         }    
-		failure{
+	failure{
             //archiveArtifacts artifacts: 'load-test.csv'
-		    cleanWs()
-		}
+	    cleanWs()
+	}
 			
-		}
+    }
 }
