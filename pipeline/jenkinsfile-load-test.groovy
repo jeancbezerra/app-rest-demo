@@ -23,6 +23,19 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr:'3'))
     }
     stages {
+       stage("Parameters Values"){
+	    steps {
+		    echo "=================== APP_SCM_BRANCH : ${APP_SCM_BRANCH}"    
+		    echo "=================== APP_SCM_REPOSITORY : ${APP_SCM_REPOSITORY}"    
+		    echo "=================== BOT_SCRIPT : ${BOT_SCRIPT}"    
+		    echo "=================== BOT_THREADS : ${BOT_THREADS}"    
+		    echo "=================== BOT_RAMPUP : ${BOT_RAMPUP}"    
+		    echo "=================== BOT_DURATION : ${BOT_DURATION}"    
+		    echo "=================== BOT_STARTUPDELAY : ${BOT_STARTUPDELAY}"    
+		    echo "=================== STAGE_TIMEOUT : ${STAGE_TIMEOUT}"    
+	    }
+       }
+	    
        stage("Application Repository"){
             steps {
 		    sh 'git config --global http.sslVerify false'
