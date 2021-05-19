@@ -4,8 +4,8 @@ pipeline {
     agent any
 	
 	parameters {
-		string(name: "BRANCH", defaultValue: "master", description: "Branch do Repositorio")
-		string(name: "REPOSITORY", defaultValue: "https://github.com/jeancbezerra/app-rest-demo.git", description: "Repositorio do Robo")
+		string(name: "SCM_BRANCH", defaultValue: "master", description: "Branch do Repositorio")
+		string(name: "SCM_REPOSITORY", defaultValue: "https://github.com/jeancbezerra/app-rest-demo.git", description: "Repositorio do Robo")
 		string(name: "BOT_SCRIPT", defaultValue: "bot/bot-jmeter-4.jmx", description: "Nome do Robo jmx")
 		string(name: "BOT_THREADS", defaultValue: "2", description: "Quantidade de threads (VUs) utilizadas no Robo")
 		string(name: "BOT_RAMPUP", defaultValue: "60", description: "Tempo maximo para subir todas as threads (VUs) durante o teste")
