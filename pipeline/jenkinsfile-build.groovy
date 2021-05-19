@@ -17,14 +17,14 @@ pipeline {
     }
 
     stages {
-       stage("Application Repository"){
+        stage("Application Repository"){
             steps {
-		sh 'git config --global http.sslVerify false'
-		timeout(time: 2, unit: "MINUTES") {
-			git branch: "master",
-			credentialsId: "github-up-jeancbezerra",
-			url: "${APP_REPOSITORY}"
-		}
+		        sh 'git config --global http.sslVerify false'
+    	        timeout(time: 2, unit: "MINUTES") {
+			        git branch: "master",
+			        credentialsId: "github-up-jeancbezerra",
+			        url: "${APP_REPOSITORY}"
+		        }
             }
         }
 		
@@ -33,14 +33,32 @@ pipeline {
                 sh "mvn clean package -DskipTests"
             }
         }
+        
+    }
 
-        post {
-            success{
-                archiveArtifacts artifacts: 'app-rest-demo.war'
-                cleanWs()
-            }failure{
-                cleanWs()
-            }
+    post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+            cleanWs()
         }
-    }	
+        success {
+            echo 'I succeeded!'
+            //archiveArtifacts artifacts: 'app-rest-demo.war'
+            cleanWs()
+        }
+        unstable {
+            echo 'I am unstable :/'
+            cleanWs()
+        }
+        failure {
+            echo 'I failed :('
+            cleanWs()
+        }
+        changed {
+            echo 'Things were different before...'
+            cleanWs()
+        }
+    }
+    
 }
