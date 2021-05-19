@@ -53,7 +53,7 @@ pipeline {
 		//Begin parallel stage dev
 		stage("Deploy in Development"){			
 			steps {
-				deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.23:8080/')], contextPath: 'app-rest-demo', war: '**/app-rest-demo.war'
+				deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://192.168.0.23:8080/')], contextPath: 'app-rest-demo', onFailure: false, war: '**/app-rest-demo.war'
 			}
 			post {
 				always {
