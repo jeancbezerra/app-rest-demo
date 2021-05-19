@@ -37,7 +37,7 @@ pipeline {
 
         stage("Bot Execution"){
             steps {
-                sh "/opt/coe/JMETER/apache-jmeter-4.0/bin/jmeter.sh --nongui --testfile ${env.JENKINS_HOME}/workspace/${JOB_NAME}/${BOT_SCRIPT} --jmeterproperty threads=${BOT_VIRTUAL_USERS} --jmeterproperty rampup=${BOT_RUMPUP} --jmeterproperty duration=${BOT_DURATION} --jmeterproperty startup=${BOT_STARTUPDELAY} --jmeterproperty aggregate=load-test.csv"
+                sh "/opt/coe/JMETER/apache-jmeter-4.0/bin/jmeter.sh --nongui --testfile ${env.JENKINS_HOME}/workspace/${JOB_NAME}/${BOT_SCRIPT} --jmeterproperty threads=${BOT_NUMBER_THREADS} --jmeterproperty rampup=${BOT_RUMPUP} --jmeterproperty duration=${BOT_DURATION} --jmeterproperty startup=${BOT_STARTUPDELAY} --jmeterproperty aggregate=load-test.csv"
             }
         }
 
