@@ -27,9 +27,9 @@ pipeline {
             steps {
 		    sh 'git config --global http.sslVerify false'
 		    timeout(time: 2, unit: "MINUTES") {
-			    git branch: "${BRANCH}",
+			    git branch: "${SCM_BRANCH}",
 		    credentialsId: "github-up-jeancbezerra",
-		    url: "${REPOSITORY}"
+		    url: "${SCM_REPOSITORY}"
 				}
             }           
         }		
