@@ -4,8 +4,8 @@ pipeline {
     agent any
 	
 	parameters {
-		string(name: "SCM_BRANCH", defaultValue: "master", description: "Branch do Repositorio")
-		string(name: "SCM_REPOSITORY", defaultValue: "https://github.com/jeancbezerra/app-rest-demo.git", description: "Repositorio do Robo")
+		string(name: "APP_SCM_BRANCH", defaultValue: "master", description: "Branch do Repositorio")
+		string(name: "APP_SCM_REPOSITORY", defaultValue: "https://github.com/jeancbezerra/app-rest-demo.git", description: "Repositorio do Robo")
 		string(name: "BOT_SCRIPT", defaultValue: "bot/bot-jmeter-4.jmx", description: "Nome do Robo jmx")
 		string(name: "BOT_THREADS", defaultValue: "2", description: "Quantidade de threads (VUs) utilizadas no Robo")
 		string(name: "BOT_RAMPUP", defaultValue: "60", description: "Tempo maximo para subir todas as threads (VUs) durante o teste")
@@ -27,9 +27,9 @@ pipeline {
             steps {
 		    sh 'git config --global http.sslVerify false'
 		    timeout(time: 2, unit: "MINUTES") {
-			    git branch: "${SCM_BRANCH}",
+			    git branch: "${APP_SCM_BRANCH}",
 		    credentialsId: "github-up-jeancbezerra",
-		    url: "${SCM_REPOSITORY}"
+		    url: "${APP_SCM_REPOSITORY}"
 				}
             }           
         }		
