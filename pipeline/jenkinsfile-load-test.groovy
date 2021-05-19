@@ -21,7 +21,7 @@ pipeline {
     options {
         timestamps()
         buildDiscarder(logRotator(numToKeepStr:'3'))
-	    timeout(time: ${JOB_TIMEOUT}, unit: 'SECONDS')
+	    timeout(time: '${JOB_TIMEOUT}', unit: 'SECONDS')
     }
     stages {
        stage("Application Repository"){
