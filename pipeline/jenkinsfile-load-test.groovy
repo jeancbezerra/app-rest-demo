@@ -48,12 +48,12 @@ pipeline {
     post {
         always {
             echo 'One way or another, I have finished'
-            deleteDir() /* clean up our workspace */
+	    archiveArtifacts artifacts: 'load-test.csv'
+	    sleep(time: 2, unit: "SECONDS")
             cleanWs()
         }
         success {
-            echo 'I succeeded!'
-            archiveArtifacts artifacts: 'load-test.csv'
+            echo 'I succeeded!'            
             cleanWs()
         }
         unstable {
