@@ -1,5 +1,11 @@
 #!groovy
 
+
+
+
+pipeline {	
+    agent any
+	
 parameters {
         string(name: "BRANCH", defaultValue: "master", description: "Branch do Repositorio")
         string(name: "REPOSITORY", defaultValue: "https://github.com/jeancbezerra/app-rest-demo.git", description: "Repositorio do Robo")
@@ -10,10 +16,7 @@ parameters {
         string(name: "BOT_EXECUTION_TIMEOUT", defaultValue: "300", description: "Timeout do teste em minutos")
         string(name: "BOT_STARTUPDELAY", defaultValue: "2", description: "Tempo de espera para inicializar o teste")        
 }
-
-
-pipeline {
-    agent any
+	
     tools{
         jdk "ADOPTOPENJDK_jdk8u292-b10"
 	maven "MAVEN_3_8_1"
@@ -28,9 +31,9 @@ pipeline {
             steps {
 		    sh 'git config --global http.sslVerify false'
 		    timeout(time: 2, unit: "MINUTES") {
-			    git branch: "${params.BRANCH}",
+			    git branch: "${BRANCH}",
 		    credentialsId: "github-up-jeancbezerra",
-		    url: "${params.REPOSITORY}"
+		    url: "${REPOSITORY}"
 				}
             }           
         }		
